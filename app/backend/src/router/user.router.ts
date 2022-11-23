@@ -1,10 +1,10 @@
-// import { Router } from 'express';
-// import usersControler from '../controllers/usersController';
+import { Router } from 'express';
+import UsersControler from '../controllers/userController';
 // import Validate from '../Middleware/ValidateUser';
-// // import ValidateUser from '../middleware/schemaUsers';
+// import ValidateUser from '../middleware/schemaUsers';
 
-// const userRouter = Router();
+const userRouter = Router();
 
-// userRouter.post('/', Validate.validationLogin, usersControler);
+userRouter.post('/', UsersControler);
 
-// export default userRouter;
+export default userRouter;

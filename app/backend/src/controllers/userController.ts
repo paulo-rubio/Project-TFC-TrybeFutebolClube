@@ -1,12 +1,10 @@
-// import { Request, Response } from 'express';
-// import * as Jwt from 'jsonwebtoken';
-// import Iuser from '../Interfaces/Iuser';
+import { Request, Response } from 'express';
 // import userControler from '../services/users.service';
+import loginService from '../services/users.service';
 
-// export default async function postUser(req: Request, res: Response) {
-//   const user: Iuser = req.body;
-//   await userControler(user);
-//   const token = Jwt.sign({ user }, process.env.JWT_SECRET as string);
+const loginControler = async (req: Request, res: Response) => {
+  const createLogin = await loginService(req.body);
+  res.status(200).json({ createLogin });
+};
 
-//   return res.status(201).json({ token });
-// }
+export default loginControler;
