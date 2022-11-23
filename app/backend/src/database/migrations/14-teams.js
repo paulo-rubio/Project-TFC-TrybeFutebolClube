@@ -6,7 +6,7 @@ module.exports = {
         type: Sequelize.INTEGER,
         autoIncrement: true
       },
-      teamName: Sequelize.INTEGER
+      team_name: Sequelize.STRING
     })
   },
   down: async (queryInterface) => {

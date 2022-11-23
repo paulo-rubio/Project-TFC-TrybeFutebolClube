@@ -1,10 +1,10 @@
 // import { Request, Response } from 'express';
 // import * as Jwt from 'jsonwebtoken';
-// import { User } from '../interfaces';
+// import Iuser from '../Interfaces/Iuser';
 // import userControler from '../services/users.service';
 
 // export default async function postUser(req: Request, res: Response) {
-//   const user: User = req.body;
+//   const user: Iuser = req.body;
 //   await userControler(user);
 //   const token = Jwt.sign({ user }, process.env.JWT_SECRET as string);
 
