@@ -1,21 +1,21 @@
-import { Request, Response, NextFunction } from 'express';
-import * as jwt from 'jsonwebtoken';
+// import { Request, Response, NextFunction } from 'express';
+// import * as jwt from 'jsonwebtoken';
 
-export default function authMiddleware(req: Request, res: Response, next: NextFunction) {
-  try {
-    const { authorization: token } = req.headers;
+// export default function authMiddleware(req: Request, res: Response, next: NextFunction) {
+//   try {
+//     const { authorization: token } = req.headers;
 
-    if (!token) {
-      return res.status(401).json({ message: 'Token not found' });
-    }
-    const decoded = jwt.verify(token, process.env.JWT_SECRET as string);
+//     if (!token) {
+//       return res.status(401).json({ message: 'Token not found' });
+//     }
+//     const decoded = jwt.verify(token, process.env.JWT_SECRET as string);
 
-    req.body.user = decoded; // Colocamos a pessoa usuária para o req e ser utilizado em qualquer rota dos controllers
+//     req.body.user = decoded; // Colocamos a pessoa usuária para o req e ser utilizado em qualquer rota dos controllers
 
-    next();
-  } catch (err) {
-    console.log(err);
+//     next();
+//   } catch (err) {
+//     console.log(err);
 
-    return res.status(401).json({ message: 'Invalid Token' });
-  }
-}
+//     return res.status(401).json({ message: 'Invalid Token' });
+//   }
+// }
