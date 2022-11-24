@@ -14,10 +14,7 @@ const { app } = new App();
 
 const { expect } = chai;
 describe('Seu teste', () => {
-  /**
-   * Exemplo do uso de stubs com tipos
-   */
-
+  sinon.stub()
   // let chaiHttpResponse: Response;
 
   // before(async () => {

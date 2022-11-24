@@ -12,4 +12,5 @@ EXPOSE 3001
 
 RUN npx tsc
 
-ENTRYPOINT ["npm", "start"]
+ENTRYPOINT [ "npm", "run" ]
+CMD [ "start" ]
