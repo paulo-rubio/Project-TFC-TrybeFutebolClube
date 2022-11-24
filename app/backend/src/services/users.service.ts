@@ -6,10 +6,10 @@ import ILogin from '../Interfaces/iLogin';
 import UserModel from '../database/models/UserModel';
 import IUser from '../Interfaces/Iuser';
 
-const secret = 'jwt_secret';
+const secret = process.env.JWT_SECRET || 'jwt_secret';
 
 const postLogin = async (user: ILogin): Promise<IType> => {
-  const log = await UserModel.findOne({ where: { email: user.email } }) as unknown as IUser;
+  const log = await UserModel.findOne({ where: { email: user.email } }) as IUser;
 
   if (!log.email || !user.password) {
     return { type: true, message: 'All fields must be filled' };
@@ -32,7 +32,9 @@ const postLogin = async (user: ILogin): Promise<IType> => {
 };
 
 const getLogin = async (id: number): Promise<{ role: string }> => {
-  const user = await UserModel.findOne({ where: { id } }) as unknown as IUser;
+  const user = await UserModel.findOne({ where: { id } }) as IUser;
+  console.log(user, 'role');
+
   return { role: user.role };
 };
 
