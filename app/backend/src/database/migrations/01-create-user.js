@@ -6,7 +6,7 @@ module.exports = {
         type: Sequelize.INTEGER,
         autoIncrement: true
       },
-      userName: Sequelize.STRING,
+      username: Sequelize.STRING,
       role: Sequelize.STRING,
       email: Sequelize.STRING,
       password: Sequelize.STRING
