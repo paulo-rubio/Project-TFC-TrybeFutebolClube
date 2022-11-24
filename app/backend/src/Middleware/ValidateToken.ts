@@ -20,6 +20,7 @@ export function authMiddleware(req: Request, res: Response, next: NextFunction) 
   }
 }
 const secret = 'jwt_secret';
+
 export const createToken = (id: number) => jwt.sign({
   data: { id },
 }, secret, { algorithm: 'HS256' });

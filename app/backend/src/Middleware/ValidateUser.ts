@@ -1,16 +1,18 @@
-// import { NextFunction, Request, Response } from 'express';
-// import * as Joi from 'joi';
-// import User from '../database/models/UserModel';
+import { NextFunction, Request, Response } from 'express';
 
-// export default class ValidateLogin {
-//   public userModel = User;
-//   public validation = async (req: Request, res: Response, next: NextFunction) => {
-//     const { email, password } = req.body
-//     if (error) {
-//       return res.status(400).json({ message: error.message });
-//     }
-//   }
+const regex = /^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
 
-//   next();
-// }
-// }
+export default function validateUser(req: Request, res: Response, next: NextFunction) {
+  const { email, password } = req.body;
+  if (!regex.test(email) || !email) {
+    return res.status(400).json(
+      { type: 401, message: 'Incorrect email or password' },
+    );
+  }
+  if (!password) {
+    return res.status(400).json(
+      { type: 401, message: 'Incorrect email or password' },
+    );
+  }
+  next();
+}

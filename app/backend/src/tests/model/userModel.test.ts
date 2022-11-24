@@ -14,8 +14,7 @@ const { app } = new App();
 
 const { expect } = chai;
 describe('Seu teste', () => {
-  sinon.stub()
-  // let chaiHttpResponse: Response;
+  let chaiHttpResponse: Response;
 
   // before(async () => {
   //   sinon
@@ -37,7 +36,43 @@ describe('Seu teste', () => {
   //   expect(...)
   // });
 
-  it('Seu sub-teste', () => {
-    expect(false).to.be.eq(true);
+  it('!emain', async () => {
+    chaiHttpResponse = await chai
+      .request(app)
+      .post('/login')
+      .send({ email: '', password: 'secret_admin' })
+    expect(chaiHttpResponse.status).to.be.equal(400);
+    expect(chaiHttpResponse.body).to.deep.equal({ message: "All fields must be filled" });
+  });
+  it('!password', async () => {
+    chaiHttpResponse = await chai
+      .request(app)
+      .post('/login')
+      .send({ email: 'admin@admin.com', password: '' })
+    expect(chaiHttpResponse.status).to.be.equal(400);
+    expect(chaiHttpResponse.body).to.deep.equal({ message: "All fields must be filled" });
+  });
+  it('email incorreto', async () => {
+    chaiHttpResponse = await chai
+      .request(app)
+      .post('/login')
+      .send({ email: 'test@email.com', password: 'secret_admin' })
+    expect(chaiHttpResponse.status).to.be.equal(401);
+    expect(chaiHttpResponse.body).to.deep.equal({ message: "Incorrect email or password" });
+  });
+  it('senha incorreta', async () => {
+    chaiHttpResponse = await chai
+      .request(app)
+      .post('/login')
+      .send({ email: 'admin@admin.com', password: 'senha_seecreta' })
+    expect(chaiHttpResponse.status).to.be.equal(401);
+    expect(chaiHttpResponse.body).to.deep.equal({ message: "Incorrect email or password" });
+  });
+  it('testando corretamente', async () => {
+    chaiHttpResponse = await chai
+      .request(app)
+      .post('/login')
+      .send({ email: 'admin@admin.com', password: 'secret_admin' })
+    expect(chaiHttpResponse.status).to.be.equal(200);
   });
 });
