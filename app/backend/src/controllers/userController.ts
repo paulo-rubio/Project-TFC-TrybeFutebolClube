@@ -3,8 +3,10 @@ import { Request, Response } from 'express';
 import loginService from '../services/users.service';
 
 const loginControler = async (req: Request, res: Response) => {
-  const createLogin = await loginService.postLogin(req.body);
-  res.status(200).json({ createLogin });
+  const { type, message } = await loginService.postLogin(req.body);
+
+  if (type) return res.status(401).json({ message });
+  res.status(200).json({ token: message });
 };
 
 const getLogin = async (req: Request, res: Response) => {

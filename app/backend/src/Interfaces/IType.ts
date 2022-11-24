@@ -1,4 +1,4 @@
 export default interface IType {
-  type: number;
+  type: boolean;
   message: string;
 }

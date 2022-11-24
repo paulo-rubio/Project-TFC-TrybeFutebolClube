@@ -3,14 +3,14 @@ import db from '.';
 
 class UserModel extends Model {
   declare id: number;
-  declare userName: string;
+  declare username: string;
   declare role: string;
   declare email: string;
   declare password: string;
 }
 UserModel.init({
   id: { type: DataTypes.INTEGER, primaryKey: true },
-  userName: DataTypes.STRING,
+  username: DataTypes.STRING,
   role: DataTypes.STRING,
   email: DataTypes.STRING,
   password: DataTypes.STRING,
