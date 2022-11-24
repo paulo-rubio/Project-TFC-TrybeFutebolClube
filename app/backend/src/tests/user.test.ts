@@ -3,8 +3,8 @@ import * as chai from 'chai';
 // @ts-ignore
 import chaiHttp = require('chai-http');
 
-import App from '../../app'
-import User from '../../database/models/UserModel';
+import App from '../app'
+import User from '../database/models/UserModel';
 
 import { Response } from 'superagent';
 
@@ -75,4 +75,10 @@ describe('Seu teste', () => {
       .send({ email: 'admin@admin.com', password: 'secret_admin' })
     expect(chaiHttpResponse.status).to.be.equal(200);
   });
+  it('invalid request for get in /login/validate', async () => {
+    chaiHttpResponse = await chai
+      .request(app)
+      .get('/login/validate')
+    expect(chaiHttpResponse.status).to.be.equal(500)
+  })
 });

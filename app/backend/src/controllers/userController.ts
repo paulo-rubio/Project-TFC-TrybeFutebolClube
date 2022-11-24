@@ -11,10 +11,8 @@ const loginControler = async (req: Request, res: Response) => {
 
 const getLogin = async (req: Request, res: Response) => {
   const id = req.body.user;
-  console.log(id);
 
   const { role } = await loginService.getLogin(id);
-  console.log(role);
 
   res.status(200).json(role);
 };

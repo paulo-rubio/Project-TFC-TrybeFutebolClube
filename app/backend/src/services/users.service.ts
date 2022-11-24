@@ -1,6 +1,5 @@
 import * as bcrypt from 'bcryptjs';
 import * as Jwt from 'jsonwebtoken';
-// import IsussesType from '../Interfaces/ISussessoType';
 import IType from '../Interfaces/IType';
 import ILogin from '../Interfaces/iLogin';
 import UserModel from '../database/models/UserModel';
@@ -11,11 +10,8 @@ const secret = process.env.JWT_SECRET || 'jwt_secret';
 const postLogin = async (user: ILogin): Promise<IType> => {
   const log = await UserModel.findOne({ where: { email: user.email } }) as IUser;
 
-  if (!log.email || !user.password) {
-    return { type: true, message: 'All fields must be filled' };
-  }
-  if (log.password.length < 6) {
-    return { type: true, message: 'Password must be at least 6 characters long' };
+  if (!log) {
+    return { type: true, message: 'Incorrect email or password' };
   }
   const crypt = await bcrypt.compare(user.password, log.password);
   if (!crypt) return { type: true, message: 'Incorrect email or password' };
@@ -33,7 +29,6 @@ const postLogin = async (user: ILogin): Promise<IType> => {
 
 const getLogin = async (id: number): Promise<{ role: string }> => {
   const user = await UserModel.findOne({ where: { id } }) as IUser;
-  console.log(user, 'role');
 
   return { role: user.role };
 };
