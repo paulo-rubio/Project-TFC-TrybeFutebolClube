@@ -68,17 +68,20 @@ describe('Seu teste', () => {
     expect(chaiHttpResponse.status).to.be.equal(401);
     expect(chaiHttpResponse.body).to.deep.equal({ message: "Incorrect email or password" });
   });
-  it('testando corretamente', async () => {
+
+  it('testando corretamente toda a aplicação login', async () => {
     chaiHttpResponse = await chai
       .request(app)
       .post('/login')
       .send({ email: 'admin@admin.com', password: 'secret_admin' })
-    expect(chaiHttpResponse.status).to.be.equal(200);
-  });
-  it('invalid request for get in /login/validate', async () => {
-    chaiHttpResponse = await chai
+    expect(chaiHttpResponse.status).to.be.equal(200)
+
+    const role = await chai
       .request(app)
       .get('/login/validate')
-    expect(chaiHttpResponse.status).to.be.equal(500)
+      .set('Authorization', chaiHttpResponse.body.token)
+
+    expect(role.status).to.be.equal(200)
+    expect(role.body).to.be.deep.equal({ role: 'admin' })
   })
 });

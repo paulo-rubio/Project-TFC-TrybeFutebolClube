@@ -1,9 +1,9 @@
 import * as bcrypt from 'bcryptjs';
 import * as Jwt from 'jsonwebtoken';
-import IType from '../Interfaces/IType';
-import ILogin from '../Interfaces/iLogin';
+import IType from '../Interfaces/InterfaceForUser/IType';
+import ILogin from '../Interfaces/InterfaceForUser/iLogin';
 import UserModel from '../database/models/UserModel';
-import IUser from '../Interfaces/Iuser';
+import IUser from '../Interfaces/InterfaceForUser/Iuser';
 
 const secret = process.env.JWT_SECRET || 'jwt_secret';
 
