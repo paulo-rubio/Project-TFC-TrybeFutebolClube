@@ -13,8 +13,9 @@ const getLogin = async (req: Request, res: Response) => {
   const id = req.body.user;
 
   const { role } = await loginService.getLogin(id);
+  console.log(role);
 
-  res.status(200).json(role);
+  res.status(200).json({ role });
 };
 
 export default { loginControler, getLogin };
