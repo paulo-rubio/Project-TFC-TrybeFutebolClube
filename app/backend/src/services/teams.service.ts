@@ -10,7 +10,6 @@ const getTeams = async () => {
 
 const getTeamId = async (id: number): Promise<Iteams> => {
   const Team = await TeamModel.findOne({ where: { id } }) as Iteams;
-  console.log(Team, 'aaa');
 
   return Team;
 };

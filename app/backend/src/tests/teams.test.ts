@@ -1,47 +1,52 @@
-// import * as sinon from 'sinon';
-// import * as chai from 'chai';
-// // @ts-ignore
-// import chaiHttp = require('chai-http');
+import * as sinon from 'sinon';
+import * as chai from 'chai';
+// @ts-ignore
+import chaiHttp = require('chai-http');
 
-// import App from '../app';
-// import Example from '../database/models/ExampleModel';
+import teams from './mocks/teams';
+import App from '../app'
+import Team from '../database/models/TeamModel';
 
-// import { Response } from 'superagent';
+import { Response } from 'superagent';
 
-// chai.use(chaiHttp);
+chai.use(chaiHttp);
 
-// const { app } = new App();
+const { app } = new App();
 
-// const { expect } = chai;
+const { expect } = chai;
+describe('Seu teste', () => {
+  let chaiHttpResponse: Response;
 
-// describe('Seu teste', () => {
-/**
-* Exemplo do uso de stubs com tipos
-*/
+  before(async () => {
+    sinon
+      .stub(Team, "findAll")
+      .resolves(teams as Team[]);
+    sinon
+      .stub(Team, "findOne")
+      .resolves(teams[0] as Team);
+  });
 
-  // let chaiHttpResponse: Response;
 
-  // before(async () => {
-  //   sinon
-  //     .stub(Example, "findOne")
-  //     .resolves({
-  //       ...<Seu mock>
-  //     } as Example);
-  // });
+  after(() => {
+    (Team.findAll as sinon.SinonStub).restore();
+    (Team.findOne as sinon.SinonStub).restore();
 
-  // after(()=>{
-  //   (Example.findOne as sinon.SinonStub).restore();
-  // })
+  })
 
-  // it('...', async () => {
-  //   chaiHttpResponse = await chai
-  //      .request(app)
-  //      ...
+  it('pegando todos os teams', async () => {
+    chaiHttpResponse = await chai
+      .request(app)
+      .get('/teams')
+    expect(chaiHttpResponse.status).to.be.equal(200);
+    expect(chaiHttpResponse.body).to.be.deep.equal(teams)
+  });
+  it('pegando por um id expecifico de teams', async () => {
+    chaiHttpResponse = await chai
+      .request(app)
+      .get('/teams/1')
+    expect(chaiHttpResponse.status).to.be.equal(200);
+    expect(chaiHttpResponse.body).to.be.deep.equal(teams[0])
+  });
 
-  //   expect(...)
-  // });
+});
 
-//   it('Seu sub-teste', () => {
-//     expect(false).to.be.eq(true);
-//   });
-// });
