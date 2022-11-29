@@ -13,16 +13,17 @@ const secret = process.env.JWT_SECRET || 'jwt_secret';
 export function authMiddleware(req: Request, res: Response, next: NextFunction) {
   try {
     const { authorization: token } = req.headers;
+
+    if (!token) return res.status(401).json({ message: 'Token must be a valid token' });
+
     const data = jwt.verify(token as string, secret) as jwt.JwtPayload;
-    // console.log(data);
-    // return res.status(200).json(data);
 
     req.body.user = data.userId;
-  } catch (_e) {
+
+    next();
+  } catch (e) {
     return res.status(401).json({ message: 'Token must be a valid token' });
   }
-
-  next();
 }
 
 export const createToken = (id: number) => jwt.sign({

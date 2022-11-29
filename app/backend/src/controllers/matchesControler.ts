@@ -10,8 +10,10 @@ const getMatchers = async (req: Request, res: Response) => {
 const postMatches = async (req: Request, res: Response) => {
   const { type, message, error } = await matchersService.postMatches(req.body);
   if (type) return res.status(error).json({ message });
+
   res.status(error).json(message);
 };
+
 // const patchMatches = async (req:Request, res:Response) => {
 //   const { id } = req.params;
 //   const { type, message, error } = await matchersService.patchMatches(id);

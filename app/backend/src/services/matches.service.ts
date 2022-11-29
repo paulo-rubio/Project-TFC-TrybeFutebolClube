@@ -45,12 +45,12 @@ const postMatches = async (newMatcher: IPostMatches): Promise<IError> => {
   return { type: false, message: createMatches, error: 201 };
 };
 
-// const patchMatches = async () => {
+// const patchMatches = async (id: number): Promise<IError> => {
 
 // };
 
 export default {
   getMatches,
   postMatches,
-  // patchMatches
+  // patchMatches,
 };
