@@ -9,6 +9,7 @@ loginRouter.post(
   (req, res, next) => validateUser(req, res, next),
   (req, res) => UsersControler.loginControler(req, res),
 );
+
 loginRouter.get(
   '/login/validate',
   (req, res, next) => authMiddleware(req, res, next),

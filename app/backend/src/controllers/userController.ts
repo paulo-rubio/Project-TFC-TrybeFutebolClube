@@ -4,6 +4,7 @@ import loginService from '../services/users.service';
 
 const loginControler = async (req: Request, res: Response) => {
   const { type, message } = await loginService.postLogin(req.body);
+  console.log(req.body);
 
   if (type) return res.status(401).json({ message });
   res.status(200).json({ token: message });
