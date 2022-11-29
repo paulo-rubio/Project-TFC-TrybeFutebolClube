@@ -14,16 +14,24 @@ const postMatches = async (req: Request, res: Response) => {
   res.status(error).json(message);
 };
 
-// const patchMatches = async (req:Request, res:Response) => {
-//   const { id } = req.params;
-//   const { type, message, error } = await matchersService.patchMatches(id);
-//   if (type) return res.status(error).json({ message });
+const finishMatches = async (req:Request, res:Response) => {
+  const { id } = req.params;
+  await matchersService.finishMatches(Number(id));
+  res.status(200).json({ message: 'Finished' });
+};
 
-//   res.status(200).json(message);
-// };
+const updateMatches = async (req:Request, res:Response) => {
+  const { id } = req.params;
+  const { homeTeamGoals, awayTeamGoals } = req.body;
+
+  await matchersService.updateMatches(Number(id), { homeTeamGoals, awayTeamGoals });
+
+  res.status(200).json({ message: 'Updated' });
+};
 
 export default {
   getMatchers,
   postMatches,
-  // patchMatches,
+  finishMatches,
+  updateMatches,
 };

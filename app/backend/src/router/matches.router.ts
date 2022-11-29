@@ -1,7 +1,6 @@
 import { Router } from 'express';
 import { authMiddleware } from '../Middleware/Validate';
 import matchesControler from '../controllers/matchesControler';
-// import { authMiddleware } from '../Middleware/Validate';
 
 const matchesRouter = Router();
 
@@ -12,6 +11,7 @@ matchesRouter.post(
   (req, res, next) => authMiddleware(req, res, next),
   (req, res) => matchesControler.postMatches(req, res),
 );
-// matchesRouter.patch('/:id/finish', (req, res) => matchesControler.patchMatches(req, res));
+matchesRouter.patch('/:id', (req, res) => matchesControler.updateMatches(req, res));
+matchesRouter.patch('/:id/finish', (req, res) => matchesControler.finishMatches(req, res));
 
 export default matchesRouter;

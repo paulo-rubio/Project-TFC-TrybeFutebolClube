@@ -2,6 +2,7 @@ import IPostMatches from '../Interfaces/InterfaceForMatches/IPostMatches';
 import { IError } from '../Interfaces/InterfaceForUser/IType';
 import TeamModel from '../database/models/TeamModel';
 import MatchModel from '../database/models/matchesModel';
+import IGoals from '../Interfaces/InterfaceForMatches/IGoals';
 import IMatches from '../Interfaces/InterfaceForMatches/Imatches';
 
 const getMatches = async (query: string) => {
@@ -45,12 +46,17 @@ const postMatches = async (newMatcher: IPostMatches): Promise<IError> => {
   return { type: false, message: createMatches, error: 201 };
 };
 
-// const patchMatches = async (id: number): Promise<IError> => {
+const finishMatches = async (id: number): Promise<void> => {
+  await MatchModel.update({ inProgress: false }, { where: { id } });
+};
 
-// };
+const updateMatches = async (id:number, goals: IGoals): Promise<void> => {
+  await MatchModel.update(goals, { where: { id } });
+};
 
 export default {
   getMatches,
   postMatches,
-  // patchMatches,
+  updateMatches,
+  finishMatches,
 };
