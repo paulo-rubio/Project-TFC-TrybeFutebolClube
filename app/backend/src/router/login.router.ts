@@ -1,6 +1,5 @@
 import { Router } from 'express';
-import { authMiddleware } from '../Middleware/ValidateToken';
-import validateUser from '../Middleware/ValidateUser';
+import validateUser, { authMiddleware } from '../Middleware/Validate';
 import UsersControler from '../controllers/userController';
 // import Validate from '../Middleware/ValidateUser';
 // import ValidateUser from '../middleware/schemaUsers';

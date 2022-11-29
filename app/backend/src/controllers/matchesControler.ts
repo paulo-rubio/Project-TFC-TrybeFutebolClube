@@ -7,15 +7,21 @@ const getMatchers = async (req: Request, res: Response) => {
   res.status(200).json(matches);
 };
 
-// const postMatches = async (req: Request, res: Response) => {
+const postMatches = async (req: Request, res: Response) => {
+  const { type, message, error } = await matchersService.postMatches(req.body);
+  if (type) return res.status(error).json({ message });
+  res.status(error).json(message);
+};
+// const patchMatches = async (req:Request, res:Response) => {
 //   const { id } = req.params;
+//   const { type, message, error } = await matchersService.patchMatches(id);
+//   if (type) return res.status(error).json({ message });
 
-//   const { type, message } = await matchersService.postMatches(id, req.body);
-
-//   if (type) return res.status(401).json({ message });
-//   res.status(200).json({ token: message });
+//   res.status(200).json(message);
 // };
 
 export default {
   getMatchers,
+  postMatches,
+  // patchMatches,
 };
