@@ -14,7 +14,7 @@ chai.use(chaiHttp);
 const { app } = new App();
 
 const { expect } = chai;
-describe('Seu teste', () => {
+describe('teste relacionado a teams', () => {
   let chaiHttpResponse: Response;
 
   before(async () => {
@@ -30,7 +30,6 @@ describe('Seu teste', () => {
   after(() => {
     (Team.findAll as sinon.SinonStub).restore();
     (Team.findOne as sinon.SinonStub).restore();
-
   })
 
   it('pegando todos os teams', async () => {

@@ -22,7 +22,7 @@ module.exports = {
         }
       },
       away_team_goals: Sequelize.INTEGER,
-      in_progress: Sequelize.INTEGER
+      in_progress: Sequelize.INTEGER,
     })
   },
   down: async (queryInterface) => {

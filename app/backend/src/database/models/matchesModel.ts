@@ -17,6 +17,7 @@ MatchModel.init({
   awayTeam: DataTypes.NUMBER,
   awayTeamGoals: DataTypes.NUMBER,
   inProgress: DataTypes.BOOLEAN,
+
 }, {
   underscored: true,
   modelName: 'matches',
@@ -24,7 +25,7 @@ MatchModel.init({
   timestamps: false,
 });
 
-MatchModel.belongsTo(TeamModel, { foreignKey: 'homeTeam' });
-MatchModel.belongsTo(TeamModel, { foreignKey: 'awayTeam' });
+MatchModel.belongsTo(TeamModel, { foreignKey: 'homeTeam', as: 'teamHome' });
+MatchModel.belongsTo(TeamModel, { foreignKey: 'awayTeam', as: 'teamAway' });
 
 export default MatchModel;

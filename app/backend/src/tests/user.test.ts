@@ -13,28 +13,8 @@ chai.use(chaiHttp);
 const { app } = new App();
 
 const { expect } = chai;
-describe('Seu teste', () => {
+describe('teste relacionado a Login', () => {
   let chaiHttpResponse: Response;
-
-  // before(async () => {
-  //   sinon
-  //     .stub(Example, "findOne")
-  //     .resolves({
-  //       ...<Seu mock>
-  //     } as Example);
-  // });
-
-  // after(()=>{
-  //   (Example.findOne as sinon.SinonStub).restore();
-  // })
-
-  // it('...', async () => {
-  //   chaiHttpResponse = await chai
-  //      .request(app)
-  //      ...
-
-  //   expect(...)
-  // });
 
   it('!emain', async () => {
     chaiHttpResponse = await chai
