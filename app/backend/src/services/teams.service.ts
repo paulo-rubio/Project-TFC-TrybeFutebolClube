@@ -1,5 +1,4 @@
 import TeamModel from '../database/models/TeamModel';
-// import IType from '../Interfaces/InterfaceForUser/IType';
 import Iteams from '../Interfaces/InterfaceForTeams/ITeams';
 
 const getTeams = async () => {

@@ -1,5 +1,4 @@
 import { Request, Response } from 'express';
-// import userControler from '../services/users.service';
 import teamsService from '../services/teams.service';
 
 const getTeams = async (_req: Request, res: Response) => {

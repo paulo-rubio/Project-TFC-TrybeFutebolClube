@@ -1,15 +1,15 @@
-const awayResult1= [
+const awayResult1 = [
   {
     name: 'Palmeiras',
-    totalPoints: '6',
-    totalGames: '2',
-    totalVictories: '2',
-    totalDraws: '0',
-    totalLosses: '0',
-    goalsFavor: '7',
-    goalsOwn: '0',
-    goalsBalance: '7',
-    efficiency: '100'
+    totalPoints: 6,
+    totalGames: 2,
+    totalVictories: 2,
+    totalDraws: 0,
+    totalLosses: 0,
+    goalsFavor: 7,
+    goalsOwn: 0,
+    goalsBalance: 7,
+    efficiency: '100.00'
   },
   {
     name: 'Corinthians',

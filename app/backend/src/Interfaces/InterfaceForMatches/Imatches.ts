@@ -1,5 +1,3 @@
-// import { NumberDataType } from "sequelize";
-
 interface IMatches {
   id: number,
   homeTeam: number,

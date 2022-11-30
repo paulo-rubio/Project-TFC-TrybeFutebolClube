@@ -9,8 +9,7 @@ import allLeaderBorder from './mocks/leaderBorder/allLb';
 import awayResult from './mocks/leaderBorder/away';
 import homeResult from './mocks/leaderBorder/home';
 
-import matchers from './mocks/matches'
-import { matchesWithInProgressIsFalse, matchesWithInProgressIsTrue, matches, newMatch, finishedMatch } from './mocks/matches'
+import { matchesWithInProgressIsFalse } from './mocks/matches'
 import { Response } from 'superagent';
 
 chai.use(chaiHttp);
@@ -20,8 +19,6 @@ const { app } = new App();
 const { expect } = chai;
 describe('teste relacionado a teams', () => {
   let chaiHttpResponse: Response;
-
-
 
   afterEach(sinon.restore)
 
@@ -33,7 +30,7 @@ describe('teste relacionado a teams', () => {
       .get('/leaderboard')
 
     expect(chaiHttpResponse.status).to.be.equal(200);
-    expect(chaiHttpResponse.body).to.be.deep.equal(allLeaderBorder)
+    expect(chaiHttpResponse.body[0]).to.be.deep.equal(allLeaderBorder[0])
   });
   it('get in /leaderboard/home', async () => {
     sinon.stub(Match, "findAll").resolves(matchesWithInProgressIsFalse as unknown as Match[]);
@@ -43,7 +40,7 @@ describe('teste relacionado a teams', () => {
       .request(app)
       .get('/leaderboard/home')
     expect(chaiHttpResponse.status).to.be.equal(200);
-    expect(chaiHttpResponse.body).to.be.deep.equal(homeResult)
+    expect(chaiHttpResponse.body[0]).to.be.deep.equal(homeResult[0])
   });
   it('get in /leaderboard/away', async () => {
     sinon.stub(Match, "findAll").resolves(matchesWithInProgressIsFalse as unknown as Match[]);
@@ -52,7 +49,7 @@ describe('teste relacionado a teams', () => {
       .request(app)
       .get('/leaderboard/away')
     expect(chaiHttpResponse.status).to.be.equal(200);
-    expect(chaiHttpResponse.body).to.be.deep.equal(awayResult)
+    expect(chaiHttpResponse.body[0]).to.be.deep.equal(awayResult[0])
   });
 
 

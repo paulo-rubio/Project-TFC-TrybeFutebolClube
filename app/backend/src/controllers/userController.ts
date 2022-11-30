@@ -1,5 +1,4 @@
 import { Request, Response } from 'express';
-// import userControler from '../services/users.service';
 import loginService from '../services/users.service';
 
 const loginControler = async (req: Request, res: Response) => {

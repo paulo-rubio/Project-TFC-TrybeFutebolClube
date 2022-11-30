@@ -1,7 +1,5 @@
 import { Router } from 'express';
 import teamsControler from '../controllers/teamsControler';
-// import Validate from '../Middleware/ValidateUser';
-// import ValidateUser from '../middleware/schemaUsers';
 
 const teamsRouter = Router();
 
