@@ -89,6 +89,29 @@ const awayLeaderBorder = (matches: IMatches[]): ILeaderBord[] => {
   return table;
 };
 
+const allLeaderBorder = (matches: IMatches[]): ILeaderBord[] => {
+  const table: ILeaderBord[] = [];
+  matches.forEach(({ homeTeamGoals, awayTeamGoals, teamHome, teamAway }) => {
+    const teamHomeI = table.findIndex((e) => e.name === teamHome.teamName);
+    const dataHome = leader(homeTeamGoals, awayTeamGoals);
+
+    const teamAwayI = table.findIndex((e) => e.name === teamAway.teamName);
+    const dataAway = leader(awayTeamGoals, homeTeamGoals);
+
+    if (teamHomeI < 0) {
+      table.push({ name: teamHome.teamName, ...dataHome });
+    } else {
+      table[teamHomeI] = update(table[teamHomeI], dataHome);
+    }
+    if (teamAwayI < 0) {
+      table.push({ name: teamAway.teamName, ...dataAway });
+    } else {
+      table[teamAwayI] = update(table[teamAwayI], dataAway);
+    }
+  });
+  return table;
+};
+
 const order = (border: ILeaderBord[]): ILeaderBord[] => {
   const newBorder:ILeaderBord[] = border;
   newBorder.sort((a, b) => (
@@ -101,4 +124,4 @@ const order = (border: ILeaderBord[]): ILeaderBord[] => {
   return newBorder;
 };
 
-export default { homeLeaderBorder, awayLeaderBorder, order };
+export default { homeLeaderBorder, awayLeaderBorder, order, allLeaderBorder };

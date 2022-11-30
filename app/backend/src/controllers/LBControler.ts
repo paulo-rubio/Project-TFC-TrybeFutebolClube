@@ -16,4 +16,4 @@ const getLeaderBorderAway = async (_req: Request, res: Response) => {
   res.status(200).json(leaderboard);
 };
 
-export default { getLeaderBorder, getLeaderBorderHome, getLeaderBorderAway };
+export default { getLeaderBorderHome, getLeaderBorderAway, getLeaderBorder };

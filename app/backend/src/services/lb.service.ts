@@ -5,8 +5,9 @@ import matchesService from './matches.service';
 
 const leaderBorderService = async () => {
   const matches = await matchesService.getMatches('false');
-  const leaderboard = leaderBorder.homeLeaderBorder(matches);
-  return leaderboard;
+  const leaderboard = leaderBorder.allLeaderBorder(matches);
+  const orderLeaderBorder = leaderBorder.order(leaderboard);
+  return orderLeaderBorder;
 };
 
 const leaderBorderAwayService = async () => {

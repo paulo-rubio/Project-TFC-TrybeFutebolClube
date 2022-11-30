@@ -5,7 +5,7 @@ const LBRouter = Router();
 
 LBRouter
   .get(
-    '/leaderboard/',
+    '/leaderboard',
     (req, res) => LBControler.getLeaderBorder(req, res),
   );
 
