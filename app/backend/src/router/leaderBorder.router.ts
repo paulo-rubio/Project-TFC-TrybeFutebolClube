@@ -15,4 +15,10 @@ LBRouter
     (req, res) => LBControler.getLeaderBorderHome(req, res),
   );
 
+LBRouter
+  .get(
+    '/leaderboard/away',
+    (req, res) => LBControler.getLeaderBorderAway(req, res),
+  );
+
 export default LBRouter;

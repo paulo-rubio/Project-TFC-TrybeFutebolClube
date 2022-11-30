@@ -9,15 +9,15 @@ const calcForResult = (homeGoals: number, awayGoals:number) => {
     points: 1,
   };
   if (homeGoals > awayGoals) {
-    resultGame.points = 3;
-    resultGame.win = 1;
-    resultGame.draw = 0;
+    resultGame.points = 3; resultGame.win = 1; resultGame.draw = 0;
   }
   if (awayGoals > homeGoals) {
-    resultGame.points = 0;
-    resultGame.defeaf = 1;
-    resultGame.draw = 0;
+    resultGame.points = 0; resultGame.defeaf = 1; resultGame.draw = 0;
   }
+  if (awayGoals === homeGoals) {
+    resultGame.points = 1; resultGame.draw = 1;
+  }
+
   return resultGame;
 };
 
@@ -73,7 +73,23 @@ const homeLeaderBorder = (matches: IMatches[]): ILeaderBord[] => {
   return table;
 };
 
-export const order = (border: ILeaderBord[]): ILeaderBord[] => {
+const awayLeaderBorder = (matches: IMatches[]): ILeaderBord[] => {
+  const table: ILeaderBord[] = [];
+  matches.forEach(({ homeTeamGoals, awayTeamGoals, teamAway }) => {
+    const teamIndexInName = table.findIndex((e) => e.name === teamAway.teamName);
+    const data = leader(awayTeamGoals, homeTeamGoals);
+
+    if (teamIndexInName < 0) {
+      table.push({ name: teamAway.teamName, ...data });
+    } else {
+      table[teamIndexInName] = update(table[teamIndexInName], data);
+    }
+  });
+
+  return table;
+};
+
+const order = (border: ILeaderBord[]): ILeaderBord[] => {
   const newBorder:ILeaderBord[] = border;
   newBorder.sort((a, b) => (
     b.totalPoints - a.totalPoints
@@ -85,4 +101,4 @@ export const order = (border: ILeaderBord[]): ILeaderBord[] => {
   return newBorder;
 };
 
-export default homeLeaderBorder;
+export default { homeLeaderBorder, awayLeaderBorder, order };
