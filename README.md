@@ -1,13 +1,17 @@
-# :construction: README customizado em construção ! :construction:
-<!-- Olá, Tryber!
-Esse é apenas um arquivo inicial para o README do seu projeto no qual você pode customizar e reutilizar todas as vezes que for executar o trybe-publisher.
+# TFC - TrybeFutebolClube
 
-Para deixá-lo com a sua cara, basta alterar o seguinte arquivo da sua máquina: ~/.student-repo-publisher/custom/_NEW_README.md
+# Projeto
+Um grande projeto utilizando TypeScript, MySQL, Sequelize, Testes(Sinon,Chai) e como estrutura de software a MSC. 
 
-É essencial que você preencha esse documento por conta própria, ok?
-Não deixe de usar nossas dicas de escrita de README de projetos, e deixe sua criatividade brilhar!
-:warning: IMPORTANTE: você precisa deixar nítido:
-- quais arquivos/pastas foram desenvolvidos por você; 
-- quais arquivos/pastas foram desenvolvidos por outra pessoa estudante;
-- quais arquivos/pastas foram desenvolvidos pela Trybe.
--->
+# Tecnologias
+Para o desenvolvimento desse projeto foi utilizado:
+
+- MySql
+- TypeScript
+- Sinon & Chai
+- Sequelize
+
+# Nesse projeto tive que desenvolver.
+- Criar iversos testes sobre o back-end da aplicação;
+- Criar os requerimentos back-end para o front-end;
+- Criar a estrutura da DataBase;
