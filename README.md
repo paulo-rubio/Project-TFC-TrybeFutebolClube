@@ -1,7 +1,9 @@
 # TFC - TrybeFutebolClube
 
-# Projeto
-Um grande projeto utilizando TypeScript, MySQL, Sequelize, Testes(Sinon,Chai) e como estrutura de software a MSC. 
+# Projeto 
+Neste projeto tem como base jogos de futebol, onde podemos verificar por meio de uma tabela quais são os times presentes no TFC, conseguindo verificar quais jogos estão em andamento ou não; 
+
+obs: eu desenvolvi apenas o back-end desta aplicação 
 
 # Tecnologias
 Para o desenvolvimento desse projeto foi utilizado:
