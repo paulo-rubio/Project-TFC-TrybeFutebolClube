@@ -31,6 +31,6 @@ Para o desenvolvimento desse projeto foi utilizado:
 - Sequelize
 
 # Nesse projeto tive que desenvolver.
-- Criar iversos testes sobre o back-end da aplicação;
+- Criar diversos testes sobre o back-end da aplicação;
 - Criar os requerimentos back-end para o front-end;
 - Criar a estrutura da DataBase;
